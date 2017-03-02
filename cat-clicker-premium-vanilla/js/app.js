@@ -34,20 +34,19 @@ var model = {
 
 /*
 console.log(model.currentCat);
-for(var i=0; i< model.cats.length; i++) {
-    ('#cat-list').append(model.cats[i]);
+for(cat in model.cats){
+  console.log(model.cats[cat].name);
 }
 */
 
 var octopus = {
 
     init: function() {
+        console.log("init function of octopus")
         console.log(model.cats[0]);
         // set our current cat to the first one in the list
         model.currentCat = model.cats[0];
-
-
-
+        console.log(model.currentCat);
         // tell our views to initialize
         catListView.init();
         catView.init();
@@ -59,13 +58,12 @@ var octopus = {
     },
 
     getCats: function() {
-        console.log(model.cat);
+        console.log(model.cats);
         return model.cats;
     },
 
     // set the currently-selected cat to the object passed in
     setCurrentCat: function(cat) {
-        console.log(cat);
         model.currentCat = cat;
 
     },
@@ -100,8 +98,10 @@ var catView = {
 
     render: function() {
         // update the DOM elements with values from the current cat
+        console.log("render function of cat view");
         var currentCat = octopus.getCurrentCat();
-        console.log("the render function current cat is " + currentCat);        this.countElem.textContent = currentCat.clickCount;
+        console.log("the render function current cat is " + currentCat);
+        this.countElem.textContent = currentCat.clickCount;
         this.catNameElem.textContent = currentCat.name;
         this.catImageElem.src = currentCat.imgSrc;
     }
@@ -111,13 +111,15 @@ var catListView = {
 
     init: function() {
         // store the DOM element for easy access later
+        console.log("cat list view initial function")
         this.catListElem = document.getElementById('cat-list');
-
+        console.log(this.render);
         // render this view (update the DOM elements with the right values)
         this.render();
     },
 
     render: function() {
+        console.log("render function of cat list view ")
         var cat, elem, i;
         // get the cats we'll be rendering from the octopus
         var cats = octopus.getCats();
