@@ -26,6 +26,7 @@ $(function() {
         },
 
         getVisiblePizzas: function() {
+            console.log("show pizza");
             var visiblePizzas = data.pizzas.filter(function(pizza) {
                 return pizza.visible;
             });
@@ -33,6 +34,7 @@ $(function() {
         },
 
         init: function() {
+            console.log("initial function");
             view.init();
         }
     };
@@ -40,6 +42,7 @@ $(function() {
 
     var view = {
         init: function() {
+            console.log("intial function of VIIEW");
             var addPizzaBtn = $('.add-pizza');
             addPizzaBtn.click(function() {
                 octopus.addPizza();
@@ -60,6 +63,7 @@ $(function() {
         },
 
         render: function() {
+            console.log("render function of view ");
             // Cache vars for use in forEach() callback (performance)
             var $pizzaList = this.$pizzaList,
                 pizzaTemplate = this.pizzaTemplate;
