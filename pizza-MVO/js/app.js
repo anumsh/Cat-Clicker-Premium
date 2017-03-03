@@ -8,6 +8,7 @@ $(function() {
 
     var octopus = {
         addPizza: function() {
+            console.log("adding pizza");
             var thisID = ++data.lastID;
 
             data.pizzas.push({
@@ -18,6 +19,7 @@ $(function() {
         },
 
         removePizza: function(pizza) {
+            console.log("removing pizza");
             var clickedPizza = data.pizzas[ pizza.id - 1 ];
             clickedPizza.visible = false;
             view.render();
