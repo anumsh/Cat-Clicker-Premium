@@ -22,13 +22,37 @@
   <body>
     <div id="map"></div>
     <script>
+      // if we declare the variable map with the keyword var in the global scope.we can reference the global map variable inside the local scope of the initMap function and initialize it. Finally, we are able to access the map variable inside other functions of our script, for example, the ViewModel.
       var map;
       function initMap() {
-        // Constructor creates a new map - only center and zoom are required.
-        map = new google.maps.Map(document.getElementById('map'), {
+        // Constructor creates a new map
+        //only center and zoom are required.
+        map = new google.maps.Map(document.getElementById('map'),
+        {
           center: {lat: 40.7413549, lng: -73.9980244},
-          zoom: 13
+          zoom: 4
+        }
+        );
+        var contentString = "info window content";
+        // info window
+        var infowindow = new google.maps.InfoWindow(
+        {
+          content: contentString
         });
+        //  var for latitude and longitude
+        var tribeca = {lat: 40.7323222, lng: -74.0089934};
+        // var for marker
+        var marker = new google.maps.Marker({
+          position: tribeca,
+          map: map,
+          title: 'First Marker!'
+        });
+        // click on marker and get the info window content
+        // using click event
+        marker.addListener('click', function() {
+           infowindow.open(map, marker);
+         }
+          );
       }
     </script>
 
