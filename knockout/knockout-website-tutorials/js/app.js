@@ -25,6 +25,11 @@ function SeatReservation(name, initialMeal) {
     var self = this;
     self.name = name;
     self.meal = ko.observable(initialMeal);
+
+    self.formattedPrice = ko.computed(function() {
+        var price = self.meal().price;
+        return price ? "$" + price.toFixed(2) : "None";
+    });
 }
 
 // Overall viewmodel for this screen, along with initial state
@@ -49,6 +54,10 @@ function ReservationsViewModel() {
 
     self.addSeat = function() {
         self.seats.push(new SeatReservation("", self.availableMeals[0]));
+    }
+
+    self.removeSeat = function(seat) {
+        self.seats.remove(seat)
     }
 }
 
