@@ -1,11 +1,22 @@
 <html>
 <head>
-  <link type="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <div class='liveExample'>
+  <h1> Simple Knockout example showing MVVM model</h1>
+  <h4> Concepts used:</h4>
+  <ul>
+    <li> ko.observable()</li>
+    <li> ko.computed function(() {})</li>
+    <li> ko.applyBindings()</li>
+    <li> data-bind='text:propertyname'></li>
+    <li> data-bind='visible: functionname'> </li>
+    <li> data-bind='click: functionname, disable: functionname'></li>
+  </ul>
 
-    <div>You've clicked <span data-bind='text: numberOfClicks'>&nbsp;</span> times</div>
+    <div>You've clicked <b><span data-bind='text: numberOfClicks'>&nbsp;</span> </b>times</div>
 
     <button data-bind='click: registerClick, disable: hasClickedTooManyTimes'>Click me</button>
 
