@@ -1,0 +1,19 @@
+<html>
+<head>
+  <link type="stylesheet" href="style.css">
+</head>
+<body>
+<div class='liveExample'>
+
+    <div>You've clicked <span data-bind='text: numberOfClicks'>&nbsp;</span> times</div>
+
+    <button data-bind='click: registerClick, disable: hasClickedTooManyTimes'>Click me</button>
+
+    <div data-bind='visible: hasClickedTooManyTimes'>
+        That's too many clicks! Please stop before you wear out your fingers.
+        <button data-bind='click: resetClicks'>Reset clicks</button>
+        <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="js/app.js"></script>
+    </div>
+  </body>
+</html>
