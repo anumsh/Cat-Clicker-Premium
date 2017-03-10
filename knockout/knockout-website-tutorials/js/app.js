@@ -46,6 +46,10 @@ function ReservationsViewModel() {
         new SeatReservation("Anum", self.availableMeals[1]),
         new SeatReservation("Babli", self.availableMeals[2])
     ]);
+
+    self.addSeat = function() {
+        self.seats.push(new SeatReservation("", self.availableMeals[0]));
+    }
 }
 
 
