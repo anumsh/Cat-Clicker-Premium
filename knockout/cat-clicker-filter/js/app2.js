@@ -31,11 +31,15 @@ var Cat = function(data){
 var ViewModel = function(){
   var self = this;
   this.catList = ko.observableArray([]); // cat array
-  this.search= ko.observable(''); // search box
+  this.search= ko.observable('');// search box
+  this.clickCount=ko.observable(0);
   Model.forEach(function(catItem) // adding cat entries in catList
   {
     self.catList.push(new Cat(catItem))
   })
+  this.currentCat = ko.observable(this.catList()[0]);
+  console.log(this.currentCat());
+  console.log(this.currentCat().clickCount());
   console.log(this.catList());
   this.filter= ko.computed(function() {
         var filter = this.search().toLowerCase(); // store the search box value in filter variable
@@ -54,9 +58,14 @@ var ViewModel = function(){
   }, this);
 
    this.reset = function() {
-        this.search("");
+        self.search("");
     }
 
+    this.incrementCounter = function(){
+      console.log(self.currentCat().clickCount());
+    console.log(self.currentCat().clickCount(self.currentCat().clickCount() + 1));
+    self.currentCat().clickCount(self.currentCat().clickCount() + 1);
+  };
 }
 
 ko.applyBindings(new ViewModel())
