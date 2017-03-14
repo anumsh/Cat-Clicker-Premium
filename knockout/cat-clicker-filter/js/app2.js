@@ -41,13 +41,14 @@ var ViewModel = function(){
         var filter = this.search().toLowerCase(); // store the search box value in filter variable
         console.log(filter);
         if (!filter) {
-            return self.catList(); // f there is no user input, return the self.catList() observableArray
+            return self.catList(); // if there is no user input, return the self.catList() observableArray
         }
         else
         {
+            // ko.utils.arrayFilter method returns a matching subset of items
             return ko.utils.arrayFilter(this.catList(), function(item) {
                 console.log("the values are " + (item.name().toLowerCase()) + " " + filter +  " " + (item.name().toLowerCase().indexOf(filter) != -1) + " " +  (item.name().toLowerCase().indexOf(filter)) );
-                return (item.name().toLowerCase().indexOf(filter) != -1);  
+                return (item.name().toLowerCase().indexOf(filter) != -1);  // match? true else false
         });
     }
   }, this);
