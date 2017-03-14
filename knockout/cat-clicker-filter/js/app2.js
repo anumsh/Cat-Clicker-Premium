@@ -37,30 +37,17 @@ var ViewModel = function(){
     self.catList.push(new Cat(catItem))
   })
   console.log(this.catList());
-  this.visibleCats = ko.observableArray(); // visible cats
-  this.catList().forEach(function(cats) { // push the catList array items into visibleCats array
-    self.visibleCats.push(cats);
- });
- console.log(this.visibleCats());
-
   this.filter= ko.computed(function() {
-        var filter = this.search().toLowerCase();
-        self.visibleCats.removeAll();
+        var filter = this.search().toLowerCase(); // store the search box value in filter variable
         console.log(filter);
         if (!filter) {
-            //console.log(self.catList());
-            return self.visibleCats();
-            //return self.catList();
+            return self.catList(); // f there is no user input, return the self.catList() observableArray
         }
         else
         {
             return ko.utils.arrayFilter(this.catList(), function(item) {
-                console.log(item.name());
-                console.log((item.name().toLowerCase().indexOf(filter) != -1));
-                if(item.name().toLowerCase().indexOf(filter) != -1){
-                    self.visibleCats.push(item);
-                }
-
+                console.log("the values are " + (item.name().toLowerCase()) + " " + filter +  " " + (item.name().toLowerCase().indexOf(filter) != -1) + " " +  (item.name().toLowerCase().indexOf(filter)) );
+                return (item.name().toLowerCase().indexOf(filter) != -1);  
         });
     }
   }, this);
