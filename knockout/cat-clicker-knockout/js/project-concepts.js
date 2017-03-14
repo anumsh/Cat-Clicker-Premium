@@ -41,4 +41,15 @@ How to check the values in console:
 5: "dsds"
 length: 6
 
+5. vm.items();
+["Alpha", "Beta", "Gamma", "fff", "fff", "dfdf", "dfd", "dfd"]
+6.  vm.itemToAdd();
+""
+7. vm.addItem();
+undefined
+
+8. vm.items;
+function: d(){if(0<
+arguments.length)
+return d.Pa(c,arguments[0])&&(d.X(),c=arguments[0],d.W()),this;a.k.Jb(d);return c}
 */
