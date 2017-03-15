@@ -15,12 +15,11 @@
   <div class="col1">
     <h3> Cat Names</h3>
     <ul data-bind="foreach: filter">
-      <li data-bind="text: name, click:$parent.incrementCounter"</li>
-    </ul>
-    <div class="col2">
-      <h3><span data-bind="text:clickCount">
-      </span></h3>
-  </div>
+      <li>
+      <span data-bind="text:name, click:$parent.incrementCounter">  </span>  &nbsp; -
+      <span data-bind="text:clickCount"> </span> (clicks)
+    </li>
+</div>
 
     <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="js/app2.js"></script>

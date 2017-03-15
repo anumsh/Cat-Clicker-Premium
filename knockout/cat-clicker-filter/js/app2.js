@@ -38,12 +38,26 @@ var ViewModel = function(){
     self.catList.push(new Cat(catItem))
   })
   this.currentCat = ko.observable(this.catList()[0]);
-  console.log(this.currentCat());
-  console.log(this.currentCat().clickCount());
-  console.log(this.catList());
+  //console.log("current cat- " +this.currentCat().name());
+  //console.log("click count value-"+this.currentCat().clickCount());
+  //console.log(" catList- " +this.catList());
+
+  this.incrementCounter = function(){
+    //console.log(this.name());
+    this.clickCount(this.clickCount() + 1);
+};
+
+/*
+2nd method to increment the counter value
+this.incrementCounter = function(count){
+  console.log(count.name());
+  count.clickCount(count.clickCount() + 1);
+};
+*/
+
   this.filter= ko.computed(function() {
         var filter = this.search().toLowerCase(); // store the search box value in filter variable
-        console.log(filter);
+        //console.log(filter);
         if (!filter) {
             return self.catList(); // if there is no user input, return the self.catList() observableArray
         }
@@ -51,7 +65,7 @@ var ViewModel = function(){
         {
             // ko.utils.arrayFilter method returns a matching subset of items
             return ko.utils.arrayFilter(this.catList(), function(item) {
-                console.log("the values are " + (item.name().toLowerCase()) + " " + filter +  " " + (item.name().toLowerCase().indexOf(filter) != -1) + " " +  (item.name().toLowerCase().indexOf(filter)) );
+                //console.log("the values are " + (item.name().toLowerCase()) + " " + filter +  " " + (item.name().toLowerCase().indexOf(filter) != -1) + " " +  (item.name().toLowerCase().indexOf(filter)) );
                 return (item.name().toLowerCase().indexOf(filter) != -1);  // match? true else false
         });
     }
@@ -61,11 +75,6 @@ var ViewModel = function(){
         self.search("");
     }
 
-    this.incrementCounter = function(){
-      console.log(self.currentCat().clickCount());
-    console.log(self.currentCat().clickCount(self.currentCat().clickCount() + 1));
-    self.currentCat().clickCount(self.currentCat().clickCount() + 1);
-  };
 }
 
 ko.applyBindings(new ViewModel())
